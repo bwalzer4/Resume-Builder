@@ -92,7 +92,19 @@ def get_tailored_json(company, jd_text):
                 "phone": "+1 757-374-1691",
                 "sections": sections
             },
-            "design": {"theme": "engineering"}
+            "design": {
+                "theme": "engineering",
+                "options": {
+                    "font": "latin-modern",
+                    "page_size": "us-letter",
+                    "margins": {
+                        "top": "2 cm",
+                        "bottom": "2 cm",
+                        "left": "2 cm",
+                        "right": "2 cm"
+                    }
+                }
+            }
         }
 
         os.makedirs('outputs', exist_ok=True)
