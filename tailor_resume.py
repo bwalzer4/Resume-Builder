@@ -36,6 +36,11 @@ def get_tailored_json(company, jd_text):
         # Save the tailored JSON
         os.makedirs('outputs', exist_ok=True)
         temp_path = f"outputs/{company.replace(' ', '_')}_tailored.json"
+
+        if os.path.exists(temp_path):
+            print(f"✅ Success: {temp_path} created.")
+        else:
+            print(f"❌ Error: {temp_path} was NOT created.")
         
         # Validate that the response is actual JSON before saving
         json.loads(raw_text) 
