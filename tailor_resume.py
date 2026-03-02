@@ -8,6 +8,8 @@ from google import genai  # Use the modern SDK
 def get_tailored_json(company, jd_text):
     # The client automatically picks up GEMINI_API_KEY from the environment
     client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
+
+    tailored_data = None
     
     with open('master_resume.json', 'r') as f:
         master_data = json.load(f)
@@ -46,10 +48,10 @@ def get_tailored_json(company, jd_text):
         tailored_data = json.loads(raw_text)
         # 1. Ensure 'cv' is the top-level container
         # If the AI didn't wrap it in 'cv', we do it manually
-        if "cv" in tailored_content:
-            final_data = tailored_content
+        if "cv" in tailored_data:
+            final_data = tailored_data
         else:
-            final_data = {"cv": tailored_content}
+            final_data = {"cv": tailored_data}
 
         # 2. Inject your Personal Info (AI often forgets this part)
         # Pull this from your master_resume.json or hardcode it
