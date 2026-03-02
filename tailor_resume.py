@@ -94,14 +94,16 @@ def get_tailored_json(company, jd_text):
             },
             "design": {
                 "theme": "engineering",
-                "options": {
+                # We use the theme name as the key for its specific options
+                "engineering": {
                     "font": "latin-modern",
                     "page_size": "us-letter",
+                    "header_font_size": "24 pt",
                     "margins": {
-                        "top": "2 cm",
-                        "bottom": "2 cm",
-                        "left": "2 cm",
-                        "right": "2 cm"
+                        "top": "1.5 cm",
+                        "bottom": "1.5 cm",
+                        "left": "1.5 cm",
+                        "right": "1.5 cm"
                     }
                 }
             }
