@@ -44,9 +44,21 @@ def get_tailored_json(company, jd_text):
         
         # Validate that the response is actual JSON before saving
         tailored_data = json.loads(raw_text)
+        # 1. Ensure 'cv' is the top-level container
+        # If the AI didn't wrap it in 'cv', we do it manually
+        if "cv" in tailored_content:
+            final_data = tailored_content
+        else:
+            final_data = {"cv": tailored_content}
+
+        # 2. Inject your Personal Info (AI often forgets this part)
+        # Pull this from your master_resume.json or hardcode it
+        final_data["cv"]["name"] = "Your Full Name"
+        final_data["cv"]["location"] = "Your City, State"
+        final_data["cv"]["email"] = "your.email@example.com"
                 
         # Inject the settings RenderCV is looking for
-        tailored_data["settings"] = {
+        final_data["settings"] = {
             "render_command": {
                 "design": "theme.yaml"
             }
@@ -54,7 +66,7 @@ def get_tailored_json(company, jd_text):
         
         # Save the modified JSON
         with open(temp_path, 'w') as f:
-            json.dump(tailored_data, f, indent=4)
+            json.dump(final_data, f, indent=4)
             
         return temp_path
         
