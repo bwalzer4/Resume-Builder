@@ -1,0 +1,4 @@
+outputs/rendercv_output/*.html
+outputs/rendercv_output/*.md
+outputs/rendercv_output/*.png
+outputs/rendercv_output/*.typ
