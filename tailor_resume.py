@@ -65,13 +65,15 @@ def get_tailored_json(company, jd_text):
         formatted_skills = []
         
         if isinstance(raw_skills, list):
+            # If AI gave us a list of dicts, rename 'name' to 'label'
             for item in raw_skills:
-                if isinstance(item, dict) and "name" in item and "details" in item:
-                    formatted_skills.append(item)
+                if isinstance(item, dict):
+                    label = item.get("label", item.get("name", "Technical Skills"))
+                    details = item.get("details", "")
+                    formatted_skills.append({"label": label, "details": details})
                 elif isinstance(item, str):
-                    # If AI returns a list of strings, group them under one category
                     if not formatted_skills:
-                        formatted_skills.append({"name": "Skills", "details": item})
+                        formatted_skills.append({"label": "Skills", "details": item})
                     else:
                         formatted_skills[0]["details"] += f", {item}"
         
@@ -87,7 +89,7 @@ def get_tailored_json(company, jd_text):
                 "name": "Ben Walzer",
                 "location": "Falls Church, VA",
                 "email": "benjamin.walzer4@gmail.com",
-                "phone": "757-374-1691",
+                "phone": "+1 757-374-1691",
                 "sections": sections
             },
             "design": {"theme": "classic"}
