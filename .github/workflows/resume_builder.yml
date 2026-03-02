@@ -22,10 +22,13 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.10'
+          python-version: '3.12'
 
       - name: Install dependencies
-        run: pip install google-genai rendercv
+        run: |
+            pip install google-genai
+            # The [full] tag is required for the 'render' command to work
+            pip install "rendercv[full]"
 
       - name: Run Tailor Script
         env:
