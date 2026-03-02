@@ -1,0 +1,18 @@
+# RenderCV Theme Configuration
+cv_label: "Data Analytics Leader"
+font: "Latin Modern"
+font_size: "10pt"
+page_size: "letterpaper"
+margins:
+  top: "0.5in"
+  bottom: "0.5in"
+  left: "0.5in"
+  right: "0.5in"
+
+# This maps your JSON keys to the LaTeX sections
+sections:
+  profile: "Summary"
+  experience: "Professional Experience"
+  skills: "Technical Skills"
+  education: "Education"
+  credentials_awards: "Certifications & Awards"
