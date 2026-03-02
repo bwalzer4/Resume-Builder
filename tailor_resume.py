@@ -55,22 +55,16 @@ def get_tailored_json(company, jd_text):
         # FINAL SCHEMA WRAPPER
         final_data = {
             "cv": {
-                "name": "Brian Walzer",
-                "location": "Arlington, VA",
-                "email": "bwalzer@example.com",
+                "name": "Ben Walzer",
+                "location": "Falls Church, VA",
+                "email": "benjamin.walzer4@gmail.com",
                 "sections": sections
             },
             "design": {
                 "theme": "classic",
-                "classic": {  # Key must match the theme name exactly
-                    "font": "latin-modern", # Note: use slug format
-                    "page_size": "us-letter",
-                    "margins": {
-                        "top": "0.5in",
-                        "bottom": "0.5in",
-                        "left": "0.5in",
-                        "right": "0.5in"
-                    }
+                "theme_customization": {
+                    "font": "latin-modern",
+                    "page_size": "us-letter"
                 }
             }
         }
