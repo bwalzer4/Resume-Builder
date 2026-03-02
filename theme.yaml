@@ -13,6 +13,6 @@ margins:
 sections:
   profile: "Summary"
   experience: "Professional Experience"
-  skills: "Technical Skills"
+  specialized_skills: "Technical Skills"
   education: "Education"
   credentials_awards: "Certifications & Awards"
