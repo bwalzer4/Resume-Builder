@@ -3,6 +3,22 @@ import os
 import argparse
 import subprocess
 from google import genai
+import datetime
+
+def clean_date(date_str):
+    """Converts 'Jul 2024' or 'July 2024' to '2024-07'"""
+    if not date_str or "Present" in date_str:
+        return date_str # RenderCV accepts 'present'
+    try:
+        # Try to parse common formats
+        for fmt in ("%b %Y", "%B %Y", "%m/%Y", "%Y-%m-%d"):
+            try:
+                return datetime.datetime.strptime(date_str, fmt).strftime("%Y-%m")
+            except:
+                continue
+        return date_str # Fallback to original if parsing fails
+    except:
+        return date_str
 
 def get_tailored_json(company, jd_text):
     client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
@@ -28,6 +44,12 @@ def get_tailored_json(company, jd_text):
         
         # Pull sections from AI response
         sections = tailored_content.get("sections", tailored_content)
+
+        # After you get your 'sections' from the AI:
+        for entry in sections.get("experience", []):
+            entry["start_date"] = clean_date(entry.get("start_date", ""))
+            if "end_date" in entry:
+                entry["end_date"] = clean_date(entry["end_date"])
 
         # FINAL SCHEMA WRAPPER
         final_data = {
