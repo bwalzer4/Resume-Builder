@@ -43,9 +43,18 @@ def get_tailored_json(company, jd_text):
             print(f"❌ Error: {temp_path} was NOT created.")
         
         # Validate that the response is actual JSON before saving
-        json.loads(raw_text) 
+        tailored_data = json.loads(raw_text)
+                
+        # Inject the settings RenderCV is looking for
+        tailored_data["settings"] = {
+            "render_command": {
+                "design": "theme.yaml"
+            }
+        }
+        
+        # Save the modified JSON
         with open(temp_path, 'w') as f:
-            f.write(raw_text)
+            json.dump(tailored_data, f, indent=4)
             
         return temp_path
         
