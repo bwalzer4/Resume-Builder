@@ -22,7 +22,7 @@ def get_tailored_json(company, jd_text):
     try:
         # Modern syntax for content generation
         response = client.models.generate_content(
-            model="gemini-1.5-flash",
+            model="gemini-2.5-flash",
             contents=prompt
         )
         
