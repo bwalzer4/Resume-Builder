@@ -31,6 +31,7 @@ def get_tailored_json(company, jd_text):
         f"Context: Recruiter for {company}. JD: {jd_text}\n"
         f"Task: Select the most relevant experience entries from the Master JSON.\n"
         f"IMPORTANT: Each experience entry MUST have: 'company', 'position', 'location', 'start_date', and 'highlights' (a list of strings).\n"
+        f"Constraint: Return 'start_date' and 'end_date' in YYYY-MM format (e.g., 2024-07).\n
         f"Return ONLY a JSON with a 'sections' key containing 'experience'.\n"
         f"Master Data: {json.dumps(master_data)}"
     )
