@@ -52,6 +52,9 @@ def get_tailored_json(company, jd_text):
             if "end_date" in entry:
                 entry["end_date"] = clean_date(entry["end_date"])
 
+        if isinstance(sections, list):
+            sections = {"experience": sections}
+
         # FINAL SCHEMA WRAPPER
         final_data = {
             "cv": {
@@ -59,13 +62,9 @@ def get_tailored_json(company, jd_text):
                 "location": "Falls Church, VA",
                 "email": "benjamin.walzer4@gmail.com",
                 "sections": sections
-            },
+           },
             "design": {
-                "theme": "classic",
-                "theme_customization": {
-                    "font": "latin-modern",
-                    "page_size": "us-letter"
-                }
+                "theme": "classic"
             }
         }
         
