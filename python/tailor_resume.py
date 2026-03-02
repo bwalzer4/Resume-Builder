@@ -1,45 +1,32 @@
 import json
 import os
 import argparse
+import subprocess
 import google.generativeai as genai
 
-# Configure AI
-genai.configure(api_key=os.environ["GEMINI_API_KEY"])
-model = genai.GenerativeModel('gemini-1.5-flash')
-
-def tailor_resume(company, jd_text):
-    # 1. Load your Master Data 
+# Stage 1: The AI Selector
+def get_tailored_json(company, jd_text):
+    genai.configure(api_key=os.environ["GEMINI_API_KEY"])
+    model = genai.GenerativeModel('gemini-1.5-flash')
+    
     with open('master_resume.json', 'r') as f:
         master_data = json.load(f)
     
-    # 2. Build the Selection Prompt
-    prompt = f"""
-    Acting as a recruiter for {company}, analyze this Job Description:
-    {jd_text}
+    prompt = f"Act as a recruiter for {company}. Use this JD: {jd_text} to filter this Master JSON: {json.dumps(master_data)}. Return ONLY a valid JSON with the top 6 relevant bullets and 12 skills. Keep the exact same structure."
     
-    From the provided Master Resume JSON, select the most impactful 6 bullets and 12 skills.
-    Focus on achievements like {master_data['experience'][0]['bullets'][1]['text'][:50]}... if relevant. 
-    
-    Return ONLY the tailored JSON following the master schema.
-    
-    MASTER DATA:
-    {json.dumps(master_data)}
-    """
-    
-    # 3. Generate content
     response = model.generate_content(prompt)
-    
-    # 4. Clean up the response (remove markdown code blocks if AI adds them)
-    cleaned_json = response.text.replace("```json", "").replace("```", "").strip()
-    
-    # 5. Save to a unique file
+    # Clean AI output and save to temp file
+    temp_path = f"outputs/{company}_tailored.json"
     os.makedirs('outputs', exist_ok=True)
-    filename = f"outputs/{company.replace(' ', '_')}_Resume.json"
-    
-    with open(filename, 'w') as f:
-        f.write(cleaned_json)
-    
-    print(f"Successfully saved tailored resume to {filename}")
+    with open(temp_path, 'w') as f:
+        f.write(response.text.replace("```json", "").replace("```", "").strip())
+    return temp_path
+
+# Stage 2: The LaTeX Renderer
+def render_pdf(json_path):
+    print(f"--- Printing PDF from {json_path} ---")
+    # RenderCV is a CLI tool, so we call it via subprocess
+    subprocess.run(["rendercv", "render", json_path, "--design", "theme.yaml"], check=True)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -47,4 +34,5 @@ if __name__ == "__main__":
     parser.add_argument('--jd', required=True)
     args = parser.parse_args()
     
-    tailor_resume(args.company, args.jd)
+    tailored_file = get_tailored_json(args.company, args.jd)
+    render_pdf(tailored_file)
