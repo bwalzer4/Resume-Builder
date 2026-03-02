@@ -61,7 +61,8 @@ def render_pdf(json_path):
     if not json_path: return
     print(f"--- Rendering PDF for {json_path} ---")
     # No --design flag needed because it's now inside the JSON!
-    subprocess.run(["rendercv", "render", json_path], check=True)True)
+    subprocess.run(["rendercv", "render", json_path], check=True)
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
