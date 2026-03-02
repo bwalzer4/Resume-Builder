@@ -2,94 +2,70 @@ import json
 import os
 import argparse
 import subprocess
-from google import genai  # Use the modern SDK
+from google import genai
 
-# Stage 1: The AI Selector
 def get_tailored_json(company, jd_text):
-    # The client automatically picks up GEMINI_API_KEY from the environment
     client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
-
-    tailored_data = None
+    tailored_content = None 
     
     with open('master_resume.json', 'r') as f:
         master_data = json.load(f)
     
+    # We explicitly tell the AI to use the 'sections' key
     prompt = (
-        f"You are a recruiter for {company}. Use this Job Description: \n\n{jd_text}\n\n"
-        f"Filter the following Master Resume JSON to pick the top 6 most relevant bullets "
-        f"and top 12 skills. Return ONLY the valid JSON, keeping the exact same structure.\n\n"
-        f"MASTER DATA: {json.dumps(master_data)}"
+        f"Context: Recruiter for {company}. JD: {jd_text}\n"
+        f"Task: From this Master JSON, pick the top 6 bullets and 12 skills.\n"
+        f"Constraint: Return a JSON object with a 'sections' key. "
+        f"Inside 'sections', use 'experience' for work and 'specialized_skills' for skills.\n"
+        f"Master Data: {json.dumps(master_data)}"
     )
-    
+
     try:
-        # Modern syntax for content generation
-        response = client.models.generate_content(
-            model="gemini-2.5-flash",
-            contents=prompt
-        )
-        
-        # Strip potential markdown backticks from AI response
+        response = client.models.generate_content(model="gemini-2.5-flash", contents=prompt)
         raw_text = response.text.strip()
-        if raw_text.startswith("```json"):
-            raw_text = raw_text.replace("```json", "", 1).rsplit("```", 1)[0].strip()
-        elif raw_text.startswith("```"):
-            raw_text = raw_text.replace("```", "", 1).rsplit("```", 1)[0].strip()
+        if "```json" in raw_text:
+            raw_text = raw_text.split("```json")[1].split("```")[0].strip()
+        tailored_content = json.loads(raw_text)
+    except Exception as e:
+        print(f"❌ AI Error: {e}")
+        return None
 
-        # Save the tailored JSON
-        os.makedirs('outputs', exist_ok=True)
-        temp_path = f"outputs/{company.replace(' ', '_')}_tailored.json"
-
-        if os.path.exists(temp_path):
-            print(f"✅ Success: {temp_path} created.")
+    if tailored_content:
+        # THE REPAIR LAYER: Force the RenderCV Schema
+        # If the AI put experience at the top level, move it under 'sections'
+        sections = {}
+        if "sections" in tailored_content:
+            sections = tailored_content["sections"]
         else:
-            print(f"❌ Error: {temp_path} was NOT created.")
-        
-        # Validate that the response is actual JSON before saving
-        tailored_data = json.loads(raw_text)
-        # 1. Ensure 'cv' is the top-level container
-        # If the AI didn't wrap it in 'cv', we do it manually
-        if "cv" in tailored_data:
-            final_data = tailored_data
-        else:
-            final_data = {"cv": tailored_data}
+            # Fallback: capture experience/skills if AI missed the 'sections' wrapper
+            sections["experience"] = tailored_content.get("experience", [])
+            sections["specialized_skills"] = tailored_content.get("specialized_skills", [])
 
-        # 2. Inject your Personal Info (AI often forgets this part)
-        # Pull this from your master_resume.json or hardcode it
-        final_data["cv"]["name"] = "Your Full Name"
-        final_data["cv"]["location"] = "Your City, State"
-        final_data["cv"]["email"] = "your.email@example.com"
-                
-        # Inject the settings RenderCV is looking for
-        final_data["settings"] = {
-            "render_command": {
-                "design": "theme.yaml"
+        final_data = {
+            "cv": {
+                "name": "Ben Walzer",
+                "location": "Falls Church, VA", # Update to your actual location
+                "email": "benjamin.walzer4@gmail.com",
+                "sections": sections
+            },
+            "settings": {
+                "render_command": {
+                    "design": "theme.yaml"
+                }
             }
         }
         
-        # Save the modified JSON
+        temp_path = f"outputs/{company.replace(' ', '_')}_tailored.json"
         with open(temp_path, 'w') as f:
             json.dump(final_data, f, indent=4)
-            
         return temp_path
-        
-    except Exception as e:
-        print(f"Error during AI generation: {e}")
-        return None
+    
+    return None
 
-# Stage 2: The LaTeX Renderer
 def render_pdf(json_path):
     if not json_path: return
-    # Get the absolute path to the directory where THIS script lives
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    theme_path = os.path.join(current_dir, "theme.yaml")
-    
-    print(f"--- Printing PDF using theme at {theme_path} ---")
-    
-    # Pass the full path to ensure RenderCV finds it
-    subprocess.run([
-        "rendercv", "render", json_path, 
-        "--design", theme_path
-    ], check=True)
+    # Use 'render' command which is part of rendercv[full]
+    subprocess.run(["rendercv", "render", json_path], check=True)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
