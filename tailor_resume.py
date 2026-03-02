@@ -62,8 +62,16 @@ def get_tailored_json(company, jd_text):
             },
             "design": {
                 "theme": "classic",
-                "font": "Latin Modern",
-                "page_size": "us-letter"
+                "classic": {  # Key must match the theme name exactly
+                    "font": "latin-modern", # Note: use slug format
+                    "page_size": "us-letter",
+                    "margins": {
+                        "top": "0.5in",
+                        "bottom": "0.5in",
+                        "left": "0.5in",
+                        "right": "0.5in"
+                    }
+                }
             }
         }
         
