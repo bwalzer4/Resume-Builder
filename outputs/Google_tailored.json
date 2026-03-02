@@ -6,7 +6,7 @@
         "phone": "+1 757-374-1691",
         "sections": {
             "summary": [
-                "Strategic analytics leader with a proven track record of solving complex business challenges by owning the full data science lifecycle, from deep data analysis and advanced modeling to developing actionable recommendations. Adept at translating data insights into compelling strategies, driving implementation, and measuring impact to optimize decision-making for senior executives."
+                "Strategic analytics leader adept at solving complex business challenges across the full data science lifecycle, from data architecture to advanced modeling, to deliver actionable, data-driven strategies. Proven track record of synthesizing insights into compelling recommendations, persuasively communicating them to senior executives, and driving implementation to impact critical initiatives, particularly within highly regulated environments like Policy, Risk, and Compliance."
             ],
             "experience": [
                 {
@@ -15,7 +15,16 @@
                     "location": "Arlington, VA",
                     "start_date": "2024-07",
                     "highlights": [
-                        "Directed cross-functional team of 10 engineers and analysts to architect end-to-end analytical frameworks, transforming raw mission data into prescriptive intelligence for executive leadership."
+                        "Developed a scalable Python automation framework to modernize complex inventory audit workflows; eliminated manual data disparities and reduced reporting latency by 80%, ensuring the high-fidelity data integrity required to secure consecutive unmodified audit opinions for the USMC."
+                    ]
+                },
+                {
+                    "company": "Kalman & Company, Inc.",
+                    "position": "Analyst, Business Analytics",
+                    "location": "Arlington, VA",
+                    "start_date": "2017-04",
+                    "highlights": [
+                        "Supported a cost-benefit analysis to determine strategic approach for the USMC to acquire a $1B capability."
                     ]
                 },
                 {
@@ -24,25 +33,7 @@
                     "location": "Arlington, VA",
                     "start_date": "2024-07",
                     "highlights": [
-                        "Engineered a readiness platform for 17K+ global assets; leveraged SQL and interactive visualization for spatiotemporal root-cause analysis, reducing diagnostic discovery time by over 10 days."
-                    ]
-                },
-                {
-                    "company": "Kalman & Company, Inc.",
-                    "position": "Senior Consultant, Data Analytics",
-                    "location": "Arlington, VA",
-                    "start_date": "2024-07",
-                    "highlights": [
-                        "Modernized enterprise financial forecasting by architecting automated Databricks ETL pipelines, increasing accuracy by 12% through advanced time-series ensemble models."
-                    ]
-                },
-                {
-                    "company": "Kalman & Company, Inc.",
-                    "position": "Senior Consultant, Data Analytics",
-                    "location": "Arlington, VA",
-                    "start_date": "2024-07",
-                    "highlights": [
-                        "Developed a scalable Python automation framework to modernize complex inventory audit workflows for the USMC, reducing reporting latency by 80% and ensuring data integrity."
+                        "Engineered a readiness platform for 17K+ global assets; leveraged SQL-based methodology and interactive visualization to conduct spatiotemporal root-cause analysis on downtime trends, resulting in an accelerated, proactive diagnostic framework that reduced time to discovery by over 10 days."
                     ]
                 },
                 {
@@ -51,7 +42,7 @@
                     "location": "Arlington, VA",
                     "start_date": "2020-08",
                     "highlights": [
-                        "Spearheaded data architecture and Python/SQL ETL for a Coast Guard Data Warehouse, engineering predictive maintenance models and self-service BI suites for proactive asset management."
+                        "Spearheaded data architecture for a Coast Guard Data Warehouse and automated Python/SQL ETL pipelines to unify disparate silos into a single source of truth; engineered predictive maintenance models and self-service BI suites that transitioned leadership from reactive reporting to proactive, data-driven asset management."
                     ]
                 },
                 {
@@ -60,36 +51,46 @@
                     "location": "Arlington, VA",
                     "start_date": "2020-08",
                     "highlights": [
-                        "Directed an enterprise-wide Business Intelligence suite for 500+ stakeholders, automating 60% of manual reporting and centralizing financial data in Power BI, accelerating decision-making."
+                        "Directed an enterprise-wide Business Intelligence suite for 500+ stakeholders, centralizing disparate financial streams into a unified Power BI ecosystem; automated 60% of manual reporting tasks, reducing report generation time from hours to seconds and accelerating the fiscal decision-making cycle."
+                    ]
+                },
+                {
+                    "company": "Kalman & Company, Inc.",
+                    "position": "Senior Consultant, Data Analytics",
+                    "location": "Arlington, VA",
+                    "start_date": "2024-07",
+                    "highlights": [
+                        "Modernized enterprise-scale financial forecasting by architecting automated Databricks ETL pipelines; consolidated disparate, legacy transactional streams into a unified Data Lakehouse, achieving a 12% increase in forecasting accuracy through the deployment of advanced time-series ensemble models."
                     ]
                 }
             ],
             "skills": [
                 {
                     "label": "Data Science & Advanced Analytics",
-                    "details": "Machine Learning, Predictive Modeling, Causal Inference, Statistical Analysis, Operations Research, Generative AI, R"
+                    "details": "Python, R, Machine Learning, Predictive Modeling, Statistical Analysis, Causal Inference, Operations Research, Generative AI"
                 },
                 {
-                    "label": "Data Engineering & Cloud Platforms",
-                    "details": "Python, SQL, ETL, Spark, BigQuery, Azure, Databricks, Data Engineering"
+                    "label": "Data Engineering & Business Intelligence",
+                    "details": "SQL, ETL, Databricks, Azure, Spark, BigQuery, Data Engineering, Power BI, Tableau, Power Query, Power Automate, Power Apps"
                 },
                 {
-                    "label": "Business Intelligence & Strategic Tools",
-                    "details": "Power BI, Tableau, Dashboarding, Project Management, Excel, Power Query, Power Automate, Power Apps"
+                    "label": "Project Management & Tools",
+                    "details": "Project Management, Excel"
                 }
             ]
         }
     },
     "design": {
         "theme": "engineering",
-        "options": {
+        "engineering": {
             "font": "latin-modern",
             "page_size": "us-letter",
+            "header_font_size": "24 pt",
             "margins": {
-                "top": "2 cm",
-                "bottom": "2 cm",
-                "left": "2 cm",
-                "right": "2 cm"
+                "top": "1.5 cm",
+                "bottom": "1.5 cm",
+                "left": "1.5 cm",
+                "right": "1.5 cm"
             }
         }
     }
