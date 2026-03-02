@@ -88,8 +88,13 @@
 #connections(
   [#connection-with-icon("location-dot")[Falls Church, VA]],
   [#link("mailto:benjamin.walzer4@gmail.com", icon: false, if-underline: false, if-color: false)[#connection-with-icon("envelope")[benjamin.walzer4\@gmail.com]]],
+  [#link("tel:+1-757-374-1691", icon: false, if-underline: false, if-color: false)[#connection-with-icon("phone")[(757) 374-1691]]],
 )
 
+
+== Summary
+
+Strategic analytics leader adept at dissecting ambiguous business challenges, leveraging full data science lifecycle expertise to deliver actionable insights and compelling recommendations. Proven track record of architecting robust data solutions, from core BI to advanced causal modeling, and driving their implementation to achieve quantifiable strategic impact.
 
 == Experience
 
@@ -109,9 +114,9 @@
   [
     Arlington, VA
 
-    July 2024 – July 2024
+    July 2024 – present
 
-    1 month
+    1 year 9 months
 
   ],
 )
@@ -122,36 +127,21 @@
 
     - Directed an enterprise-wide Business Intelligence suite for 500+ stakeholders, centralizing disparate financial streams into a unified Power BI ecosystem; automated 60\% of manual reporting tasks, reducing report generation time from hours to seconds and accelerating the fiscal decision-making cycle.
 
-    - Led the deployment of a secure Azure Cloud Analytics Platform, expanding departmental technical capabilities and providing the infrastructure to scale ML and AI-driven solutions.
-
     - Spearheaded data architecture for a Coast Guard Data Warehouse and automated Python\/SQL ETL pipelines to unify disparate silos into a single source of truth; engineered predictive maintenance models and self-service BI suites that transitioned leadership from reactive reporting to proactive, data-driven asset management.
 
   ],
   [
     Arlington, VA
 
-    Aug 2020 – July 2024
+    Aug 2020 – present
 
-    4 years
-
-  ],
-)
-
-#regular-entry(
-  [
-    #strong[Kalman & Company, Inc.], Analyst, Business Analytics
-
-    - Constructed a complex model to forecast cost for modernization of 50 stovepiped Navy IT systems, and optimize the development schedule of new capabilities and shutdown of legacy systems.
-
-    - Supported a cost-benefit analysis to determine strategic approach for the USMC to acquire a \$1B capability.
-
-  ],
-  [
-    Arlington, VA
-
-    Apr 2017 – Aug 2020
-
-    3 years 5 months
+    5 years 8 months
 
   ],
 )
+
+== Skills
+
+#strong[Data Engineering & Cloud Platforms:] ETL, Data Engineering, Databricks, Spark, BigQuery, Azure
+
+#strong[Business Intelligence & Visualization:] Power BI, Tableau, Excel, Power Query, Power Automate, Power Apps
