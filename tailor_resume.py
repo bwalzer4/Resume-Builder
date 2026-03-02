@@ -23,11 +23,11 @@ def get_tailored_json(company, jd_text):
     
     prompt = (
         f"Context: Recruiter for {company}. JD: {jd_text}\n"
-        f"Task: Create a tailored resume JSON from the Master Data.\n"
+        f"Task: Create a tailored resume JSON.\n"
         f"Structure required:\n"
         f"1. 'summary': A 2-sentence professional profile.\n"
-        f"2. 'experience': Top 6 bullets from NASA/USMC/relevant roles. Each must have 'company', 'position', 'location', 'start_date', 'highlights'.\n"
-        f"3. 'skills': A list of top 12 technical skills (e.g. [{'name': 'Python'}]).\n"
+        f"2. 'experience': Top 6 bullets from NASA/USMC. Use keys: 'company', 'position', 'location', 'start_date', 'highlights'.\n"
+        f"3. 'skills': An array of skill groups. Example: [{{'name': 'Technical Skills', 'details': 'Python, SQL, AWS'}}].\n"
         f"Master Data: {json.dumps(master_data)}"
     )
 
