@@ -12,6 +12,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Allows the bot to push files back to the repo
+      pull-requests: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
