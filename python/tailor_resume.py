@@ -1,44 +1,50 @@
 import json
 import os
+import argparse
 import google.generativeai as genai
 
-# Setup API Key (Stored in GitHub Secrets for security)
+# Configure AI
 genai.configure(api_key=os.environ["GEMINI_API_KEY"])
 model = genai.GenerativeModel('gemini-1.5-flash')
 
-def load_json(file_path):
-    with open(file_path, 'r') as f:
-        return json.load(f)
-
-def tailor_resume(job_description_text):
-    master_data = load_json('master_resume.json')
+def tailor_resume(company, jd_text):
+    # 1. Load your Master Data 
+    with open('master_resume.json', 'r') as f:
+        master_data = json.load(f)
     
+    # 2. Build the Selection Prompt
     prompt = f"""
-    You are an expert technical recruiter. I will provide a Job Description and my Master Resume JSON.
+    Acting as a recruiter for {company}, analyze this Job Description:
+    {jd_text}
     
-    TASK:
-    1. Select the 6 most relevant bullet points from the 'experience' section that match the JD.
-    2. Select the top 12 most relevant skills.
-    3. Rewrite the 'profile' text to align with the specific goals of this role while remaining truthful.
-    4. Maintain the EXACT same JSON structure as the master file.
-
-    JOB DESCRIPTION:
-    {job_description_text}
-
-    MASTER RESUME DATA:
+    From the provided Master Resume JSON, select the most impactful 6 bullets and 12 skills.
+    Focus on achievements like {master_data['experience'][0]['bullets'][1]['text'][:50]}... if relevant. 
+    
+    Return ONLY the tailored JSON following the master schema.
+    
+    MASTER DATA:
     {json.dumps(master_data)}
-    
-    RETURN ONLY THE NEW TAILORED JSON.
     """
     
+    # 3. Generate content
     response = model.generate_content(prompt)
     
-    # Save the tailored version
-    with open('tailored_resume.json', 'w') as f:
-        f.write(response.text)
-    print("Tailored resume JSON generated successfully!")
+    # 4. Clean up the response (remove markdown code blocks if AI adds them)
+    cleaned_json = response.text.replace("```json", "").replace("```", "").strip()
+    
+    # 5. Save to a unique file
+    os.makedirs('outputs', exist_ok=True)
+    filename = f"outputs/{company.replace(' ', '_')}_Resume.json"
+    
+    with open(filename, 'w') as f:
+        f.write(cleaned_json)
+    
+    print(f"Successfully saved tailored resume to {filename}")
 
 if __name__ == "__main__":
-    # In a real workflow, this JD would be passed as a command-line argument
-    jd_input = input("Paste the Job Description here: ")
-    tailor_resume(jd_input)
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--company', required=True)
+    parser.add_argument('--jd', required=True)
+    args = parser.parse_args()
+    
+    tailor_resume(args.company, args.jd)
