@@ -6,17 +6,16 @@ from google import genai
 
 def get_tailored_json(company, jd_text):
     client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
-    tailored_content = None 
     
     with open('master_resume.json', 'r') as f:
         master_data = json.load(f)
     
-    # We explicitly tell the AI to use the 'sections' key
+    # We tell the AI EXACTLY what keys to use for Experience entries
     prompt = (
         f"Context: Recruiter for {company}. JD: {jd_text}\n"
-        f"Task: From this Master JSON, pick the top 6 bullets and 12 skills.\n"
-        f"Constraint: Return a JSON object with a 'sections' key. "
-        f"Inside 'sections', use 'experience' for work and 'specialized_skills' for skills.\n"
+        f"Task: Select the most relevant experience entries from the Master JSON.\n"
+        f"IMPORTANT: Each experience entry MUST have: 'company', 'position', 'location', 'start_date', and 'highlights' (a list of strings).\n"
+        f"Return ONLY a JSON with a 'sections' key containing 'experience'.\n"
         f"Master Data: {json.dumps(master_data)}"
     )
 
@@ -26,46 +25,43 @@ def get_tailored_json(company, jd_text):
         if "```json" in raw_text:
             raw_text = raw_text.split("```json")[1].split("```")[0].strip()
         tailored_content = json.loads(raw_text)
-    except Exception as e:
-        print(f"❌ AI Error: {e}")
-        return None
+        
+        # Pull sections from AI response
+        sections = tailored_content.get("sections", tailored_content)
 
-    if tailored_content:
-        # THE REPAIR LAYER: Force the RenderCV Schema
-        # If the AI put experience at the top level, move it under 'sections'
-        sections = {}
-        if "sections" in tailored_content:
-            sections = tailored_content["sections"]
-        else:
-            # Fallback: capture experience/skills if AI missed the 'sections' wrapper
-            sections["experience"] = tailored_content.get("experience", [])
-            sections["specialized_skills"] = tailored_content.get("specialized_skills", [])
-
+        # FINAL SCHEMA WRAPPER
         final_data = {
             "cv": {
-                "name": "Ben Walzer",
-                "location": "Falls Church, VA", # Update to your actual location
-                "email": "benjamin.walzer4@gmail.com",
+                "name": "Brian Walzer",
+                "location": "Arlington, VA",
+                "email": "bwalzer@example.com",
                 "sections": sections
             },
-            "settings": {
-                "render_command": {
-                    "design": "theme.yaml"
-                }
+            "design": {
+                "theme": "classic",
+                "font": "Latin Modern",
+                "page_size": "us-letter"
             }
         }
         
+        # Notice we removed the 'settings' block that points to theme.yaml
+        # and replaced it with a 'design' block directly in the JSON.
+        # This removes the need for the external theme.yaml file!
+
         temp_path = f"outputs/{company.replace(' ', '_')}_tailored.json"
         with open(temp_path, 'w') as f:
             json.dump(final_data, f, indent=4)
         return temp_path
-    
-    return None
+        
+    except Exception as e:
+        print(f"❌ AI/JSON Error: {e}")
+        return None
 
 def render_pdf(json_path):
     if not json_path: return
-    # Use 'render' command which is part of rendercv[full]
-    subprocess.run(["rendercv", "render", json_path], check=True)
+    print(f"--- Rendering PDF for {json_path} ---")
+    # No --design flag needed because it's now inside the JSON!
+    subprocess.run(["rendercv", "render", json_path], check=True)True)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
