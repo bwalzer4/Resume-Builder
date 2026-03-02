@@ -42,9 +42,8 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          # This '|| true' prevents the workflow from crashing if nothing changed
-          git add outputs/ || echo "No new outputs to add"
-          git commit -m "New tailored resume for ${{ github.event.inputs.company_name }}" || echo "No changes to commit"
-          git push || echo "Nothing to push"
+          git add outputs/
+          git commit -m "Generated resume" || echo "No changes to commit"
+          git push || echo "No changes to push"
           git commit -m "Generated resume for ${{ github.event.inputs.company_name }}"
           git push
