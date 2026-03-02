@@ -6,7 +6,7 @@
         "phone": "+1 757-374-1691",
         "sections": {
             "summary": [
-                "Strategic analytics leader adept at dissecting ambiguous business challenges, leveraging full data science lifecycle expertise to deliver actionable insights and compelling recommendations. Proven track record of architecting robust data solutions, from core BI to advanced causal modeling, and driving their implementation to achieve quantifiable strategic impact."
+                "Strategic analytics leader adept at navigating thorny business challenges by leveraging the full data science lifecycle, from advanced analytics and causal modeling to compelling executive recommendations. Proven ability to drive implementation and measure impact in complex, highly regulated environments, with a focus on transforming policy, risk, and compliance operations."
             ],
             "experience": [
                 {
@@ -15,9 +15,24 @@
                     "location": "Arlington, VA",
                     "start_date": "2024-07",
                     "highlights": [
-                        "Directed a cross-functional team of 10 engineers and analysts to architect end-to-end analytical frameworks, transforming raw mission data into prescriptive intelligence for executive leadership.",
-                        "Engineered a readiness platform for 17K+ global assets; leveraged SQL-based methodology and interactive visualization to conduct spatiotemporal root-cause analysis on downtime trends, resulting in an accelerated, proactive diagnostic framework that reduced time to discovery by over 10 days.",
-                        "Modernized enterprise-scale financial forecasting by architecting automated Databricks ETL pipelines; consolidated disparate, legacy transactional streams into a unified Data Lakehouse, achieving a 12% increase in forecasting accuracy through the deployment of advanced time-series ensemble models.",
+                        "Directed a cross-functional team of 10 engineers and analysts to architect end-to-end analytical frameworks, transforming raw mission data into prescriptive intelligence for executive leadership."
+                    ]
+                },
+                {
+                    "company": "Kalman & Company, Inc.",
+                    "position": "Senior Consultant, Data Analytics",
+                    "location": "Arlington, VA",
+                    "start_date": "2024-07",
+                    "highlights": [
+                        "Modernized enterprise-scale financial forecasting by architecting automated Databricks ETL pipelines; consolidated disparate, legacy transactional streams into a unified Data Lakehouse, achieving a 12% increase in forecasting accuracy through the deployment of advanced time-series ensemble models."
+                    ]
+                },
+                {
+                    "company": "Kalman & Company, Inc.",
+                    "position": "Senior Consultant, Data Analytics",
+                    "location": "Arlington, VA",
+                    "start_date": "2024-07",
+                    "highlights": [
                         "Developed a scalable Python automation framework to modernize complex inventory audit workflows; eliminated manual data disparities and reduced reporting latency by 80%, ensuring the high-fidelity data integrity required to secure consecutive unmodified audit opinions for the USMC."
                     ]
                 },
@@ -27,24 +42,37 @@
                     "location": "Arlington, VA",
                     "start_date": "2020-08",
                     "highlights": [
-                        "Directed an enterprise-wide Business Intelligence suite for 500+ stakeholders, centralizing disparate financial streams into a unified Power BI ecosystem; automated 60% of manual reporting tasks, reducing report generation time from hours to seconds and accelerating the fiscal decision-making cycle.",
                         "Spearheaded data architecture for a Coast Guard Data Warehouse and automated Python/SQL ETL pipelines to unify disparate silos into a single source of truth; engineered predictive maintenance models and self-service BI suites that transitioned leadership from reactive reporting to proactive, data-driven asset management."
+                    ]
+                },
+                {
+                    "company": "Kalman & Company, Inc.",
+                    "position": "Analyst, Business Analytics",
+                    "location": "Arlington, VA",
+                    "start_date": "2017-04",
+                    "highlights": [
+                        "Constructed a complex model to forecast cost for modernization of 50 stovepiped Navy IT systems, and optimize the development schedule of new capabilities and shutdown of legacy systems."
+                    ]
+                },
+                {
+                    "company": "Kalman & Company, Inc.",
+                    "position": "Analyst, Business Analytics",
+                    "location": "Arlington, VA",
+                    "start_date": "2017-04",
+                    "highlights": [
+                        "Supported a cost-benefit analysis to determine strategic approach for the USMC to acquire a $1B capability."
                     ]
                 }
             ],
             "skills": [
                 {
-                    "label": "Data Engineering & Cloud Platforms",
-                    "details": "ETL, Data Engineering, Databricks, Spark, BigQuery, Azure"
-                },
-                {
-                    "label": "Business Intelligence & Visualization",
-                    "details": "Power BI, Tableau, Excel, Power Query, Power Automate, Power Apps"
+                    "label": "Technical Skills",
+                    "details": "SQL, Python, Power BI, ETL, Tableau, Generative AI, R, Statistical Analysis, Machine Learning, Predictive Modeling, Excel, Power Query, Spark, BigQuery, Power Automate, Power Apps, Azure, Databricks, Data Engineering, Project Management, Causal Inference, Operations Research"
                 }
             ]
         }
     },
     "design": {
-        "theme": "classic"
+        "theme": "engineering"
     }
 }
