@@ -1,0 +1,94 @@
+{
+    "experience": [
+        {
+            "company": "Kalman & Company, Inc.",
+            "role": "Senior Consultant, Data Analytics",
+            "date_range": "Jul 2024 - Present",
+            "location": "Arlington, VA",
+            "bullets": [
+                {
+                    "text": "Directed a cross-functional team of 10 engineers and analysts to architect end-to-end analytical frameworks, transforming raw mission data into prescriptive intelligence for executive leadership.",
+                    "metadata": {
+                        "industry": "Defense / Consulting",
+                        "job_type": "Leadership / Analytics Strategy",
+                        "seniority": "Senior"
+                    }
+                },
+                {
+                    "text": "Modernized enterprise-scale financial forecasting by architecting automated Databricks ETL pipelines; consolidated disparate, legacy transactional streams into a unified Data Lakehouse, achieving a 12% increase in forecasting accuracy through the deployment of advanced time-series ensemble models.",
+                    "metadata": {
+                        "industry": "Finance / Government",
+                        "job_type": "Data Engineering / Machine Learning",
+                        "seniority": "Senior"
+                    }
+                },
+                {
+                    "text": "Engineered a readiness platform for 17K+ global assets; leveraged SQL-based methodology and interactive visualization to conduct spatiotemporal root-cause analysis on downtime trends, resulting in an accelerated, proactive diagnostic framework that reduced time to discovery by over 10 days.",
+                    "metadata": {
+                        "industry": "Defense / Logistics",
+                        "job_type": "Data Engineering / SQL",
+                        "seniority": "Senior"
+                    }
+                },
+                {
+                    "text": "Developed a scalable Python automation framework to modernize complex inventory audit workflows; eliminated manual data disparities and reduced reporting latency by 80%, ensuring the high-fidelity data integrity required to secure consecutive unmodified audit opinions for the USMC.",
+                    "metadata": {
+                        "industry": "Defense / Audit",
+                        "job_type": "Python Automation / Data Integrity",
+                        "seniority": "Senior"
+                    }
+                }
+            ]
+        },
+        {
+            "company": "Kalman & Company, Inc.",
+            "role": "Consultant, Data Analytics",
+            "date_range": "Aug 2020 - Jul 2024",
+            "location": "Arlington, VA",
+            "bullets": [
+                {
+                    "text": "Directed an enterprise-wide Business Intelligence suite for 500+ stakeholders, centralizing disparate financial streams into a unified Power BI ecosystem; automated 60% of manual reporting tasks, reducing report generation time from hours to seconds and accelerating the fiscal decision-making cycle.",
+                    "metadata": {
+                        "industry": "Defense / Finance",
+                        "job_type": "Business Intelligence / Power BI",
+                        "seniority": "Mid-Senior"
+                    }
+                },
+                {
+                    "text": "Spearheaded data architecture for a Coast Guard Data Warehouse and automated Python/SQL ETL pipelines to unify disparate silos into a single source of truth; engineered predictive maintenance models and self-service BI suites that transitioned leadership from reactive reporting to proactive, data-driven asset management.",
+                    "metadata": {
+                        "industry": "Maritime / Defense",
+                        "job_type": "Data Architecture / ETL",
+                        "seniority": "Mid-Senior"
+                    }
+                }
+            ]
+        }
+    ],
+    "skills": {
+        "technical": [
+            "SQL",
+            "Python",
+            "ETL",
+            "Machine Learning",
+            "Predictive Modeling",
+            "Causal Inference",
+            "Statistical Analysis",
+            "Data Engineering",
+            "Power BI",
+            "Tableau",
+            "Databricks",
+            "Project Management"
+        ],
+        "metadata": {
+            "industry": "Agnostic",
+            "job_type": "Data Science / Engineering",
+            "seniority": "Senior"
+        }
+    },
+    "settings": {
+        "render_command": {
+            "design": "theme.yaml"
+        }
+    }
+}
