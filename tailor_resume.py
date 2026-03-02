@@ -92,7 +92,7 @@ def get_tailored_json(company, jd_text):
                 "phone": "+1 757-374-1691",
                 "sections": sections
             },
-            "design": {"theme": "classic"}
+            "design": {"theme": "engineering"}
         }
 
         os.makedirs('outputs', exist_ok=True)
