@@ -55,11 +55,18 @@ def get_tailored_json(company, jd_text):
 
 # Stage 2: The LaTeX Renderer
 def render_pdf(json_path):
-    if not json_path:
-        return
-    print(f"--- Generating PDF from {json_path} ---")
-    # Trigger RenderCV via command line
-    subprocess.run(["rendercv", "render", json_path, "--design", "theme.yaml"], check=True)
+    if not json_path: return
+    # Get the absolute path to the directory where THIS script lives
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    theme_path = os.path.join(current_dir, "theme.yaml")
+    
+    print(f"--- Printing PDF using theme at {theme_path} ---")
+    
+    # Pass the full path to ensure RenderCV finds it
+    subprocess.run([
+        "rendercv", "render", json_path, 
+        "--design", theme_path
+    ], check=True)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
