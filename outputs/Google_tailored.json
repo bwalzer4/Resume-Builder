@@ -6,18 +6,9 @@
         "phone": "+1 757-374-1691",
         "sections": {
             "summary": [
-                "Strategic analytics leader with extensive experience owning the full data science lifecycle, transforming ambiguous business challenges into actionable insights and strategic recommendations for senior leadership. Expert in architecting scalable data solutions and deploying advanced analytical and causal models, with a proven track record of driving significant impact in policy, risk, and compliance domains through data pipelining, BI, and sophisticated analysis."
+                "Strategic analytics leader with extensive experience engineering large-scale data solutions and translating complex, ambiguous business problems into actionable strategies and recommendations for senior leadership. Proven ability to drive the full data science lifecycle, from data architecture and advanced modeling to implementation, with a strong focus on policy, risk, and compliance challenges."
             ],
             "experience": [
-                {
-                    "company": "Kalman & Company, Inc.",
-                    "position": "Senior Consultant, Data Analytics",
-                    "location": "Arlington, VA",
-                    "start_date": "2024-07",
-                    "highlights": [
-                        "Engineered a readiness platform for 17K+ global assets; leveraged SQL-based methodology and interactive visualization to conduct spatiotemporal root-cause analysis on downtime trends, resulting in an accelerated, proactive diagnostic framework that reduced time to discovery by over 10 days."
-                    ]
-                },
                 {
                     "company": "Kalman & Company, Inc.",
                     "position": "Senior Consultant, Data Analytics",
@@ -29,11 +20,11 @@
                 },
                 {
                     "company": "Kalman & Company, Inc.",
-                    "position": "Senior Consultant, Data Analytics",
+                    "position": "Analyst, Business Analytics",
                     "location": "Arlington, VA",
-                    "start_date": "2024-07",
+                    "start_date": "2017-04",
                     "highlights": [
-                        "Modernized enterprise-scale financial forecasting by architecting automated Databricks ETL pipelines; consolidated disparate, legacy transactional streams into a unified Data Lakehouse, achieving a 12% increase in forecasting accuracy through the deployment of advanced time-series ensemble models."
+                        "Supported a cost-benefit analysis to determine strategic approach for the USMC to acquire a $1B capability."
                     ]
                 },
                 {
@@ -47,11 +38,20 @@
                 },
                 {
                     "company": "Kalman & Company, Inc.",
-                    "position": "Consultant, Data Analytics",
+                    "position": "Senior Consultant, Data Analytics",
                     "location": "Arlington, VA",
-                    "start_date": "2020-08",
+                    "start_date": "2024-07",
                     "highlights": [
-                        "Directed an enterprise-wide Business Intelligence suite for 500+ stakeholders, centralizing disparate financial streams into a unified Power BI ecosystem; automated 60% of manual reporting tasks, reducing report generation time from hours to seconds and accelerating the fiscal decision-making cycle."
+                        "Directed a cross-functional team of 10 engineers and analysts to architect end-to-end analytical frameworks, transforming raw mission data into prescriptive intelligence for executive leadership."
+                    ]
+                },
+                {
+                    "company": "Kalman & Company, Inc.",
+                    "position": "Senior Consultant, Data Analytics",
+                    "location": "Arlington, VA",
+                    "start_date": "2024-07",
+                    "highlights": [
+                        "Engineered a readiness platform for 17K+ global assets; leveraged SQL-based methodology and interactive visualization to conduct spatiotemporal root-cause analysis on downtime trends, resulting in an accelerated, proactive diagnostic framework that reduced time to discovery by over 10 days."
                     ]
                 },
                 {
@@ -67,18 +67,18 @@
             "skills": [
                 {
                     "label": "Data Science & Advanced Analytics",
-                    "details": "Statistical Analysis, Machine Learning, Predictive Modeling, Causal Inference, Operations Research, R, Generative AI"
+                    "details": "Machine Learning, Predictive Modeling, Causal Inference, Statistical Analysis, Operations Research, R, Generative AI"
                 },
                 {
                     "label": "Data Engineering & Platforms",
-                    "details": "SQL, Python, ETL, Spark, BigQuery, Azure, Databricks, Data Engineering"
+                    "details": "Python, SQL, ETL, Spark, BigQuery, Azure, Databricks, Data Engineering"
                 },
                 {
-                    "label": "Business Intelligence & Visualization",
-                    "details": "Power BI, Tableau, Excel, Power Query, Power Automate, Power Apps"
+                    "label": "Business Intelligence & Reporting",
+                    "details": "Power BI, Tableau, Excel, Power Automate, Power Apps"
                 },
                 {
-                    "label": "Strategy & Project Management",
+                    "label": "Project Management & Strategy",
                     "details": "Project Management"
                 }
             ]
