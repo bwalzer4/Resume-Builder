@@ -1,29 +1,45 @@
-steps:
+name: Tailor Resume
+on:
+  workflow_dispatch:
+    inputs:
+      company_name:
+        description: 'Target Company (e.g., Google, Amazon, Deloitte)'
+        required: true
+      job_description:
+        description: 'Paste the Job Description here'
+        required: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v4
         with:
-          python-version: '3.12'
+          python-version: '3.10'
 
       - name: Install dependencies
         run: |
-          sudo apt-get update
-          sudo apt-get install -y libpango-1.0-0 libpangoft2-1.0-0
-          pip install weasyprint jinja2 google-genai
+            sudo apt-get update
+            sudo apt-get install -y libpango-1.0-0 libpangoft2-1.0-0
+            pip install weasyprint jinja2 google-genai
 
       - name: Run Tailor Script
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        # Run directly from root. 
-        # The script will look for theme.yaml in this same folder.
-        run: python tailor_resume.py --company "Google" --jd "Paste JD Here"
+        run: |
+          python tailor_resume.py \
+            --company "${{ github.event.inputs.company_name }}" \
+            --jd "${{ github.event.inputs.job_description }}"
 
       - name: Commit and Push
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add .
-          git commit -m "Generated tailored resume" || echo "No changes"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add outputs/
+          git commit -m "Generated resume for ${{ github.event.inputs.company_name }}"
           git push
+
