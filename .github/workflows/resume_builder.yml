@@ -27,4 +27,3 @@ steps:
           git add .
           git commit -m "Generated tailored resume" || echo "No changes"
           git push
-
