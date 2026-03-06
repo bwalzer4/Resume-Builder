@@ -91,21 +91,6 @@ def get_tailored_json(company, jd_text):
                 "email": "benjamin.walzer4@gmail.com",
                 "phone": "+1 757-374-1691",
                 "sections": sections
-            },
-            "design": {
-                "theme": "engineering",
-                # We use the theme name as the key for its specific options
-                "engineering": {
-                    "font": "latin-modern",
-                    "page_size": "us-letter",
-                    "header_font_size": "24 pt",
-                    "margins": {
-                        "top": "1.5 cm",
-                        "bottom": "1.5 cm",
-                        "left": "1.5 cm",
-                        "right": "1.5 cm"
-                    }
-                }
             }
         }
 
@@ -121,7 +106,7 @@ def get_tailored_json(company, jd_text):
 
 def render_pdf(json_path):
     if not json_path: return
-    print(f"--- Rendering PDF from {json_path} ---")
+    print(f"--- Rendering PDF from {json_path, "--design", "theme.yaml"} ---")
     try:
         subprocess.run(["rendercv", "render", json_path], check=True)
     except subprocess.CalledProcessError as e:
