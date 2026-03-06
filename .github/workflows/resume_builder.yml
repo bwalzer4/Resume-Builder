@@ -1,49 +1,10 @@
-name: Tailor Resume
-on:
-  workflow_dispatch:
-    inputs:
-      company_name:
-        description: 'Target Company (e.g., Google, Amazon, Deloitte)'
-        required: true
-      job_description:
-        description: 'Paste the Job Description here'
-        required: true
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write  # Allows the bot to push files back to the repo
-      pull-requests: write
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.12'
-
-      - name: Install dependencies
+- name: Install dependencies
         run: |
-            pip install google-genai
-            # The [full] tag is required for the 'render' command to work
-            pip install "rendercv[full]"
+          sudo apt-get update
+          sudo apt-get install -y libpango-1.0-0 libpangoft2-1.0-0
+          pip install weasyprint jinja2 google-genai
 
       - name: Run Tailor Script
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: |
-          python tailor_resume.py \
-            --company "${{ github.event.inputs.company_name }}" \
-            --jd "${{ github.event.inputs.job_description }}"
-
-      - name: Commit and Push
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add outputs/
-          git commit -m "Generated resume" || echo "No changes to commit"
-          git push || echo "No changes to push"
-          git commit -m "Generated resume for ${{ github.event.inputs.company_name }}"
-          git push
+        run: python tailor_resume.py --company "Google" --jd "Your JD text here"
