@@ -1,4 +1,13 @@
-- name: Install dependencies
+steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y libpango-1.0-0 libpangoft2-1.0-0
@@ -7,4 +16,15 @@
       - name: Run Tailor Script
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: python tailor_resume.py --company "Google" --jd "Your JD text here"
+        # Run directly from root. 
+        # The script will look for theme.yaml in this same folder.
+        run: python tailor_resume.py --company "Google" --jd "Paste JD Here"
+
+      - name: Commit and Push
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git commit -m "Generated tailored resume" || echo "No changes"
+          git push
+
