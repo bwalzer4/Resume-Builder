@@ -6,9 +6,18 @@
         "phone": "+1 757-374-1691",
         "sections": {
             "summary": [
-                "Strategic analytics leader adept at solving complex business challenges across the full data science lifecycle, from data architecture to advanced modeling, to deliver actionable, data-driven strategies. Proven track record of synthesizing insights into compelling recommendations, persuasively communicating them to senior executives, and driving implementation to impact critical initiatives, particularly within highly regulated environments like Policy, Risk, and Compliance."
+                "Strategic analytics leader with extensive experience owning the full data science lifecycle, transforming ambiguous business challenges into actionable insights and strategic recommendations for senior leadership. Expert in architecting scalable data solutions and deploying advanced analytical and causal models, with a proven track record of driving significant impact in policy, risk, and compliance domains through data pipelining, BI, and sophisticated analysis."
             ],
             "experience": [
+                {
+                    "company": "Kalman & Company, Inc.",
+                    "position": "Senior Consultant, Data Analytics",
+                    "location": "Arlington, VA",
+                    "start_date": "2024-07",
+                    "highlights": [
+                        "Engineered a readiness platform for 17K+ global assets; leveraged SQL-based methodology and interactive visualization to conduct spatiotemporal root-cause analysis on downtime trends, resulting in an accelerated, proactive diagnostic framework that reduced time to discovery by over 10 days."
+                    ]
+                },
                 {
                     "company": "Kalman & Company, Inc.",
                     "position": "Senior Consultant, Data Analytics",
@@ -20,20 +29,11 @@
                 },
                 {
                     "company": "Kalman & Company, Inc.",
-                    "position": "Analyst, Business Analytics",
-                    "location": "Arlington, VA",
-                    "start_date": "2017-04",
-                    "highlights": [
-                        "Supported a cost-benefit analysis to determine strategic approach for the USMC to acquire a $1B capability."
-                    ]
-                },
-                {
-                    "company": "Kalman & Company, Inc.",
                     "position": "Senior Consultant, Data Analytics",
                     "location": "Arlington, VA",
                     "start_date": "2024-07",
                     "highlights": [
-                        "Engineered a readiness platform for 17K+ global assets; leveraged SQL-based methodology and interactive visualization to conduct spatiotemporal root-cause analysis on downtime trends, resulting in an accelerated, proactive diagnostic framework that reduced time to discovery by over 10 days."
+                        "Modernized enterprise-scale financial forecasting by architecting automated Databricks ETL pipelines; consolidated disparate, legacy transactional streams into a unified Data Lakehouse, achieving a 12% increase in forecasting accuracy through the deployment of advanced time-series ensemble models."
                     ]
                 },
                 {
@@ -56,42 +56,32 @@
                 },
                 {
                     "company": "Kalman & Company, Inc.",
-                    "position": "Senior Consultant, Data Analytics",
+                    "position": "Analyst, Business Analytics",
                     "location": "Arlington, VA",
-                    "start_date": "2024-07",
+                    "start_date": "2017-04",
                     "highlights": [
-                        "Modernized enterprise-scale financial forecasting by architecting automated Databricks ETL pipelines; consolidated disparate, legacy transactional streams into a unified Data Lakehouse, achieving a 12% increase in forecasting accuracy through the deployment of advanced time-series ensemble models."
+                        "Constructed a complex model to forecast cost for modernization of 50 stovepiped Navy IT systems, and optimize the development schedule of new capabilities and shutdown of legacy systems."
                     ]
                 }
             ],
             "skills": [
                 {
                     "label": "Data Science & Advanced Analytics",
-                    "details": "Python, R, Machine Learning, Predictive Modeling, Statistical Analysis, Causal Inference, Operations Research, Generative AI"
+                    "details": "Statistical Analysis, Machine Learning, Predictive Modeling, Causal Inference, Operations Research, R, Generative AI"
                 },
                 {
-                    "label": "Data Engineering & Business Intelligence",
-                    "details": "SQL, ETL, Databricks, Azure, Spark, BigQuery, Data Engineering, Power BI, Tableau, Power Query, Power Automate, Power Apps"
+                    "label": "Data Engineering & Platforms",
+                    "details": "SQL, Python, ETL, Spark, BigQuery, Azure, Databricks, Data Engineering"
                 },
                 {
-                    "label": "Project Management & Tools",
-                    "details": "Project Management, Excel"
+                    "label": "Business Intelligence & Visualization",
+                    "details": "Power BI, Tableau, Excel, Power Query, Power Automate, Power Apps"
+                },
+                {
+                    "label": "Strategy & Project Management",
+                    "details": "Project Management"
                 }
             ]
-        }
-    },
-    "design": {
-        "theme": "engineering",
-        "engineering": {
-            "font": "latin-modern",
-            "page_size": "us-letter",
-            "header_font_size": "24 pt",
-            "margins": {
-                "top": "1.5 cm",
-                "bottom": "1.5 cm",
-                "left": "1.5 cm",
-                "right": "1.5 cm"
-            }
         }
     }
 }
