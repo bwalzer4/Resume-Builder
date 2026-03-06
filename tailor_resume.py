@@ -107,8 +107,10 @@ def get_tailored_json(company, jd_text):
 def render_pdf(json_path):
     if not json_path: return
     print(f"--- Rendering PDF from {json_path} ---")
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    theme_path = os.path.join(current_dir, "theme.yaml")
     try:
-        subprocess.run(["rendercv", "render", json_path, "--design", "theme.yaml"], check=True)
+        subprocess.run(["rendercv", "render", json_path, "--design", theme_path], check=True)
     except subprocess.CalledProcessError as e:
         print(f"❌ RenderCV failed: {e}")
 
